@@ -32,3 +32,5 @@ Version 2.2 allows you to specify the classes to generate, in case your database
 To do this, specify the names of the tables to be taken into account for the generation of the model on line 20. Otherwise, comment out line 20 and uncomment line 21.
 Thank you and feel free to send me your comments on using the tool 
 !!!!!Thank you!!!!!
+
+PS: All the tables to be generated from your database must each contain a "del" column of type int or tyint. this column will allow you to check if the object has been deleted or not. This is the logical deletion
