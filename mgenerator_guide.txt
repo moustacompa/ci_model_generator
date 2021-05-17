@@ -28,3 +28,5 @@ La version 2.2 permet de spécifier les classes à générer, au cas où votre b
 Pour cela, précisez les noms des tables à prendre en compte pour la génération du model à la ligne 20. Sinon, commentez la ligne 20 et décommentez la ligne 21.
 Merci et n'hésitez pas à m'envoyer vos commentaires d'utilisation de l'outil à moustacompa@gmail.com.
 !!!!!Merci!!!!!
+
+PS : Toutes les tables à générer de votre base de donnée doivent contenir chacune, une colonne "del" de type int ou tyint. cette colonne permettra de vérifier si l'objet a été supprimé ou pas. C'est la suppression logique
