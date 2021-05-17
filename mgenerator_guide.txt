@@ -1,0 +1,30 @@
+MGenerator est un outil de génération de code model fonctionnant avec Codeigniter 3.
+Il permet de générer automatiquement le code model correspondant à votre base de données. Le code est constitué de classes CIModels, compatible avec Codeigniter.
+Comment utiliser ce code? Cela se fait en 8 étapes :
+1- Téléchargez les fichiers et placez le fichier mgenerator-latest-xx.php dans le dossier application de votre projet;
+2- Changez les paramètres de connexion à votre base de données;
+3- Verifiez si l'adresse du dossier contenant php.exe (ou php sous linux) est ajouté à la variable d'environnent PATH, sinon, l'ajouter;
+4- Ouvrez votre terminal/invite de commande et vous rendre dans le dossier application de votre projet;
+5- Executer la commande ./php mgenerator-latest-xx.php (où xx représente le numéro de version de l'outil). Si il y a des problemes de connexion à la base de données ou tout autre erreur, elle sera affichée et vous pourrez la corriger. Sinon, la commande affichera la liste des classes générées avec la progression de la génération. Une fois la génération terminée, vous pourrez retrouver les classes dans le dossier Models de votre projet;
+6- Ajoutez le code ci-dessous dans le fichier autoload.php situé dans le dossier config:
+$dir    = './application/models';
+$files = scandir($dir);
+$models = array();
+foreach ($files as $f){
+    $file_parts = pathinfo($f);
+    $file_parts['extension'];
+    $correct_extension = Array('php');
+    if(in_array($file_parts['extension'], $correct_extension)){
+        array_push($models, str_replace('.php','',$f));
+    }
+}
+$autoload['model'] = $models;
+Cela permettra à Codeigniter de reconnaitre les classes ainsi générées.
+7- Copiez le fichier Model.php dans le dossier models de votre projet;
+8- Si vous modifiez la structure de votre base de données, vous devez refaire les étapes 4 et 5 pour mettre à jour le model.
+
+!!!Nouveauté
+La version 2.2 permet de spécifier les classes à générer, au cas où votre base de données contient des données de plusieurs applications.
+Pour cela, précisez les noms des tables à prendre en compte pour la génération du model à la ligne 20. Sinon, commentez la ligne 20 et décommentez la ligne 21.
+Merci et n'hésitez pas à m'envoyer vos commentaires d'utilisation de l'outil à moustacompa@gmail.com.
+!!!!!Merci!!!!!
